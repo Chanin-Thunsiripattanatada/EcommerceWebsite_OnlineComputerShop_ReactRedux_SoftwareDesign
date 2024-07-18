@@ -1,4 +1,4 @@
-.App {
+/* .App {
   text-align: center;
 }
 
@@ -35,4 +35,29 @@
   to {
     transform: rotate(360deg);
   }
+} */
+
+
+body {
+  font-family: Prompt;
+  font-size: 16px;
+  position: relative;
+  padding-bottom: 58px;
+  min-height: 100vh;
+}
+
+main {
+  width: 95vw;
+  margin: 0 auto;
+  padding: 30px 15px;
+  min-height: calc(100vh - 211px - 58px);
+  background-color: #ECF0F1;
+}
+
+footer {
+  background-color: #000000;
+  color: #000000;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
 }
