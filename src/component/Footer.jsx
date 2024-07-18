@@ -1,5 +1,4 @@
 import React from "react";
-import '../App.css';
 const Footer = () => {
     return (
         <footer className="bg-body-tertiary text-center">

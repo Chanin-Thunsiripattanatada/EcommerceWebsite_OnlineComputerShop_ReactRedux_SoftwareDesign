@@ -1,16 +1,15 @@
 // Header.js
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import 'bootstrap/dist/js/bootstrap.bundle.min.js'; // Ensure Bootstrap JavaScript is loaded
-import '../App.css';
 import { Link, Outlet } from "react-router-dom";
 
 const Header = () => {
   return (
     <>
+    <header>
     <nav className="navbar navbar-expand-lg navbar-dark bg-dark" aria-label="Offcanvas navbar large">
       <div className="container-fluid">
-        <Link className="navbar-brand" to="#">Responsive offcanvas navbar</Link>
+        <Link className="navbar-brand" to="#"><img src={require('../image/logo192.png')} width={"75px"} height={"75px"} alt="" /></Link>
         <button className="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar2" aria-controls="offcanvasNavbar2">
           <span className="navbar-toggler-icon"></span>
         </button>
@@ -49,6 +48,7 @@ const Header = () => {
         </div>
       </div>
     </nav>
+    </header>
     <Outlet/>
     </>
   );

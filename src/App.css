@@ -45,8 +45,12 @@ body {
   padding-bottom: 58px;
   min-height: 100vh;
 }
-
+header {
+  font-family: Prompt;
+  font-size: 16px;
+}
 main {
+  font-family: Prompt;
   width: 95vw;
   margin: 0 auto;
   padding: 30px 15px;
@@ -55,6 +59,7 @@ main {
 }
 
 footer {
+  font-family: Prompt;
   background-color: #000000;
   color: #000000;
   position: absolute;
