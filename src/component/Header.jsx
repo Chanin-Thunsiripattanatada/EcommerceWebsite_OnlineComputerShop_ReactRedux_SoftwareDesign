@@ -21,7 +21,7 @@ const Header = () => {
           <div className="offcanvas-body">
             <ul className="navbar-nav justify-content-end flex-grow-1 pe-3">
               <li className="nav-item">
-                <Link className="nav-link active" aria-current="page" to="#">Home</Link>
+                <Link className="nav-link active" aria-current="page" to="/">Home</Link>
               </li>
               <li className="nav-item">
                 <Link className="nav-link" to="#">Link</Link>
@@ -31,7 +31,7 @@ const Header = () => {
                   Dropdown
                 </Link>
                 <ul className="dropdown-menu">
-                  <li><Link className="dropdown-item" to="#">Action</Link></li>
+                  <li><Link className="dropdown-item" to="/Content2">Content2</Link></li>
                   <li><Link className="dropdown-item" to="#">Another action</Link></li>
                   <li>
                     <hr className="dropdown-divider" />
