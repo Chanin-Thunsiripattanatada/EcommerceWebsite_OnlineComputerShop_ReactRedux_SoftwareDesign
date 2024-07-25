@@ -1,6 +1,6 @@
 import React from "react";
 import '../App.css';
-const Content2 = () => {
+const Content2 = () => {    
     return (
         <main>
             <div class="container my-5">
