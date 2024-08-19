@@ -93,32 +93,32 @@ const Content3 = () => {
             stock_quantity: 15,
             description: '24-core, 32-thread processor for high-performance computing',
         },
-        
+
     ];
     return (
         <>
-        <h1>Featured Product</h1>
-        <hr></hr>
-        <div class="container">
-            <div class="row">
-                {products.map((product) => (
-                    <div class="col-sm-4">
-                        <div class="card">
-                            <div class="card-body">
-                                <h2>{product.product_name}</h2>
-                                <p><strong>Category:</strong> {product.category}</p>
-                                <p><strong>Brand:</strong> {product.brand}</p>
-                                <p><strong>Model:</strong> {product.model}</p>
-                                <p><strong>Price:</strong> ${product.price}</p>
-                                <p><strong>Stock Quantity:</strong> {product.stock_quantity}</p>
-                                <p><strong>Description:</strong> {product.description}</p>
-                                <Link to="#" class="btn btn-primary">ดูสินค้า</Link>
+            <h2>Featured Product</h2>
+            <hr />
+            <div class="container">
+                <div class="row">
+                    {products.map((product) => (
+                        <div class="col-sm-4">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h2>{product.product_name}</h2>
+                                    <p><strong>Category:</strong> {product.category}</p>
+                                    <p><strong>Brand:</strong> {product.brand}</p>
+                                    <p><strong>Model:</strong> {product.model}</p>
+                                    <p><strong>Price:</strong> ${product.price}</p>
+                                    <p><strong>Stock Quantity:</strong> {product.stock_quantity}</p>
+                                    <p><strong>Description:</strong> {product.description}</p>
+                                    <Link to="#" class="btn btn-primary">ดูสินค้า</Link>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                ))}
+                    ))}
+                </div>
             </div>
-        </div>
         </>
 
     )
