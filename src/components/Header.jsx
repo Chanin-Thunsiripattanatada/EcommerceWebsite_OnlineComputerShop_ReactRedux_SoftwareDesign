@@ -9,13 +9,13 @@ const Header = () => {
       <header>
         <nav className="navbar navbar-expand-lg navbar-dark bg-dark" aria-label="Offcanvas navbar large">
           <div className="container-fluid m-1">
-            <Link className="navbar-brand" to="#"><img src={require('../image/logo192.png')} width={"75px"} height={"75px"} alt="" /></Link>
+            <Link className="navbar-brand" to="#"><img src={require('../assets/image/logo192.png')} width={"75px"} height={"75px"} alt="" /></Link>
             <button className="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar2" aria-controls="offcanvasNavbar2">
               <img src={require('../assets/image/menu.png')} width={"40px"} height={"40px"} alt="" />
             </button>
             <div className="offcanvas offcanvas-start text-bg-dark" tabIndex="-1" id="offcanvasNavbar2" data-bs-scroll="true" data-bs-backdrop="false" aria-labelledby="offcanvasNavbar2Label">
               <div className="offcanvas-header">
-                <img src={require('../image/logo192.png')} width={"75px"} height={"75px"} alt="" />
+                <img src={require('../assets/image/logo192.png')} width={"75px"} height={"75px"} alt="" />
                 <button type="button" className="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
               </div>
               <div className="offcanvas-body">
