@@ -55,7 +55,7 @@ const Header = () => {
                     <Link className="nav-link" to="#" data-bs-dismiss="offcanvas">เงื่อนไขการรับประกัน</Link>
                   </li>
                   <li className="nav-item align-self-center">
-                    <Link className="nav-link" to="#" data-bs-dismiss="offcanvas">ติดต่อเรา</Link>
+                    <Link className="nav-link" to="/เกี่ยวกับเรา" data-bs-dismiss="offcanvas">ติดต่อเรา</Link>
                   </li>
                   <li className="nav-item align-self-center">
                     <Link className="nav-link" to="/ตระกร้าสินค้า" data-bs-dismiss="offcanvas"><img src={require('../assets/image/shopping_cart_icon_177373.png')} width={"50px"} height={"50px"} alt="" /></Link>
