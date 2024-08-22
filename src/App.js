@@ -16,9 +16,11 @@ function App() {
         <Header />
         <main>
           <Routes path="/">
+          
             <Route index element={<MainPage />} />
-            
+
             <Route path="/product/:id" element={<ProductProvider><ProductDetail /></ProductProvider>} />
+
           </Routes>
         </main>
         <Footer />
