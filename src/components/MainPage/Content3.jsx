@@ -1,10 +1,11 @@
 import React, { useContext } from "react";
 import { Link, BrowserRouter as Router, Route, Routes} from "react-router-dom";
 import ProductDetail from "../ProductDetail/ProductDetail";
-import { ProductContext } from "../../context";
+import { CartProvider, ProductContext } from "../../context";
+import AddToCartButton from "../CartPage/AddToCartButton";
 
 const Content3 = () => {
-    
+
     const products = useContext(ProductContext);
 
     return (
@@ -25,6 +26,7 @@ const Content3 = () => {
                                     <p><strong>Stock Quantity:</strong> {product.stock_quantity}</p>
                                     <p><strong>Description:</strong> {product.description}</p>
                                     <Link to={`/product/${product.product_id}`} class="btn btn-primary">ดูสินค้า</Link>
+                                    <CartProvider><AddToCartButton product={product} /></CartProvider>
                                 </div>
                             </div>
                         </div>

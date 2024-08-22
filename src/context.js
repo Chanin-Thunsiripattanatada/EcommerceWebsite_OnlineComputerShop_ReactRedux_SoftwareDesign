@@ -1,4 +1,4 @@
-import React, { createContext, useState } from 'react';
+import React, { createContext, useState, useContext, useEffect} from 'react';
 
 export const ProductContext = createContext();
 
@@ -102,3 +102,48 @@ export const ProductProvider = ({ children }) => {
         </ProductContext.Provider>
     );
 }
+
+
+export const CartContext = createContext();
+
+export const CartProvider = ({ children }) => {
+    const [cartItems, setCartItems] = useState([
+        
+    ]);
+    
+    useEffect(() => {
+        const loadedData = window.localStorage.getItem('CART_ITEMS');
+        if (loadedData !== null) {
+            setCartItems(JSON.parse(loadedData));
+            console.log('loaded1', JSON.parse(loadedData));
+            console.log('loaded', cartItems);
+        }
+    }, []);
+    
+    useEffect(() => {
+        window.localStorage.setItem('CART_ITEMS', JSON.stringify(cartItems));
+        console.log('set', JSON.stringify(cartItems));
+    }, [cartItems]);
+
+    const addCartItem = (product) => {
+        setCartItems(() => {
+            const prevItems = cartItems;
+            console.log(prevItems);
+            const existingProduct = prevItems.find(item => item.id === product.id);
+            if (existingProduct) {
+                return prevItems.map(item =>
+                    item.id === product.id
+                        ? { ...item, quantity: item.quantity + 1 }
+                        : item
+                );
+            }
+            return [...prevItems, { ...product, quantity: 1 }];
+        });
+    };
+
+    return (
+        <CartContext.Provider value={{ cartItems, addCartItem, setCartItems }}>
+            {children}
+        </CartContext.Provider>
+    );
+};
