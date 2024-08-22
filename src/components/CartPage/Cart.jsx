@@ -1,17 +1,14 @@
 import React, { useState, useEffect, useContext } from 'react';
 import CartItem from './CartItem';
 import CartSummary from './CartSummary';
-import { CartContext } from "../../context";
+
+import { useSelector } from 'react-redux';
 
 const Cart = () => {
 
-    const {cartItems} = useContext(CartContext);
-
-    const {addCartItem} = useContext(CartContext);
-
-    const {setCartItems} = useContext(CartContext);
-
-    useEffect(() => {
+    const cartItems = useSelector(store => store.cart.items)
+    console.log(cartItems)
+    /*useEffect(() => {
         const loadedData = window.localStorage.getItem('CART_ITEMS');
         if(loadedData !== null){
             setCartItems(JSON.parse(loadedData));
@@ -58,7 +55,7 @@ const Cart = () => {
                 <p>Your cart is empty.</p>
             )}
         </div>
-    );
+    );*/
 };
 
 export default Cart;

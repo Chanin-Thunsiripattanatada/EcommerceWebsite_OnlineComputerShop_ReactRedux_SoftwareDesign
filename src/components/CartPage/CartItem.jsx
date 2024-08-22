@@ -1,28 +1,16 @@
-import React from 'react';
+import {React, useState, useEffect} from 'react';
 
-const CartItem = ({ item, onRemove, onUpdateQuantity }) => {
-    const handleRemove = () => {
-        onRemove(item.id);
-    };
 
-    const handleQuantityChange = (event) => {
-        onUpdateQuantity(item.id, parseInt(event.target.value, 10));
-    };
+const CartItem = (props) => {
+
+    const {product, quantity} = props.data;
 
     return (
-        <div className="cart-item">
-            <img src={item.image} alt={item.name} />
-            <div className="cart-item-details">
-                <h4>{item.id}</h4>
-                <p>Price: ${item.price}</p>
-                <input
-                    type="number"
-                    value={item.quantity}
-                    min="1"
-                    onChange={handleQuantityChange}
-                />
-                <button onClick={handleRemove}>Remove</button>
-            </div>
+        <div>
+            <h3>{product.product_name}</h3>
+            <p><strong>Quantity:</strong> {props.data.quantity}</p>
+            <p><strong>Price:</strong> ${product.price}</p>
+            <p><strong>Total:</strong> ${product.price * quantity}</p>
         </div>
     );
 };

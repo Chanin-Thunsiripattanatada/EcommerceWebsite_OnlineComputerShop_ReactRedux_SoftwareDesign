@@ -26,7 +26,7 @@ const Content3 = () => {
                                     <p><strong>Stock Quantity:</strong> {product.stock_quantity}</p>
                                     <p><strong>Description:</strong> {product.description}</p>
                                     <Link to={`/product/${product.product_id}`} class="btn btn-primary">ดูสินค้า</Link>
-                                    <CartProvider><AddToCartButton product={product} /></CartProvider>
+                                    <AddToCartButton product={product} />
                                 </div>
                             </div>
                         </div>

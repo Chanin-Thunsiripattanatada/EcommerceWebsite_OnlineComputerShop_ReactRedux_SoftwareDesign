@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import { useParams } from "react-router-dom";
 import { ProductContext } from "../../context";
+import AddToCartButton from "../CartPage/AddToCartButton";
 
 const ProductDetail = () => {
 
@@ -21,7 +22,9 @@ const ProductDetail = () => {
             <p><strong>Price:</strong> ${product.price}</p>
             <p><strong>Stock Quantity:</strong> {product.stock_quantity}</p>
             <p><strong>Description:</strong> {product.description}</p>
+            <AddToCartButton product={product} />
         </div>
+        
     );
 };
 

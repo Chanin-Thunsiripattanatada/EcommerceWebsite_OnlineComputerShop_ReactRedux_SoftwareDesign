@@ -1,16 +1,31 @@
-import React, { useContext } from 'react';
-import { CartContext } from '../../context';
+import React, { useContext, useState } from 'react';
+
+import { useDispatch } from 'react-redux';
+import { addToCart } from '../../stores/CartData';
+import QuantityButton from './QuantityButton';
 
 const AddToCartButton = ({ product }) => {
     
-    const { addCartItem } = useContext(CartContext);
+    const dispatch = useDispatch();
 
+    const [quantity, setQuantity] = useState(1);
+    
     const handleAddToCart = () => {
-        addCartItem(product);
+        dispatch(addToCart({
+            product: product,
+            quantity : quantity
+        }))
     };
 
+    const handleUpdateQuantity = (quantity) => {
+        setQuantity(quantity);
+    }
+
     return (
-        <button onClick={handleAddToCart}>Add to Cart</button>
+        <div>
+            <QuantityButton updateQuantity = {handleUpdateQuantity} />
+            <button onClick={handleAddToCart}>Add to Cart</button>
+        </div>
     );
 };
 
