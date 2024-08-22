@@ -5,13 +5,13 @@ import Header from './components/Header';
 import Footer from './components/Footer';
 import MainPage from './components/MainPage/MainPage';
 
-import Cart from './components/CartPage/Cart';
-
 import ProductDetail from './components/ProductDetail/ProductDetail';
 import { ProductProvider } from './context';
 
 
+
 import AboutMePage from './components/AboutMePage/AboutMePage';
+import CartTab from './components/CartPage/CartTab';
 
 function App() {
 
@@ -25,8 +25,8 @@ function App() {
             <Route index element={<MainPage />} />
 
             <Route path="/product/:id" element={<ProductProvider><ProductDetail /></ProductProvider>} />
-            <Route path="/ตระกร้าสินค้า" element={<Cart />} />
-            
+            <Route path="/ตระกร้าสินค้า" element={<CartTab />} />
+
             <Route path='เกี่ยวกับเรา' element={<AboutMePage />} />
 
           </Routes>
