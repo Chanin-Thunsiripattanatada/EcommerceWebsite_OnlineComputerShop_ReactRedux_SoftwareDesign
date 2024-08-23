@@ -1,9 +1,20 @@
 // Header.js
-import React from 'react';
+import {React, useState, useEffect} from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Link, Outlet } from "react-router-dom";
+import { useSelector } from 'react-redux';
 
 const Header = () => {
+
+  const [cartQuantity, setCartQuantity] = useState(0);
+  const cartItems = useSelector(store => store.cart.items);
+  useEffect(() => {
+    let total = 0;
+    cartItems.forEach(item => total += item.quantity);
+    setCartQuantity(total);
+  }, [cartItems]);
+
+
   return (
     <>
       <header>
@@ -59,6 +70,7 @@ const Header = () => {
                   </li>
                   <li className="nav-item align-self-center">
                     <Link className="nav-link" to="/ตระกร้าสินค้า" data-bs-dismiss="offcanvas"><img src={require('../assets/image/shopping_cart_icon_177373.png')} width={"50px"} height={"50px"} alt="" /></Link>
+                    <span>{cartQuantity}</span>
                   </li>
                 </ul>
               </div>
