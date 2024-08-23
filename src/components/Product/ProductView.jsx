@@ -1,30 +1,21 @@
 import React, { useContext, useState } from "react";
 import { Link, BrowserRouter as Router, Route, Routes} from "react-router-dom";
 import ProductDetail from "../ProductDetail/ProductDetail";
-import { CartProvider, CategoryProvider, ProductContext } from "../../context";
+import { CartProvider, ProductContext } from "../../context";
 import AddToCartButton from "../CartPage/AddToCartButton";
-import CategoryBar from "../Category/CategoryBar";
 
-const Content3 = () => {
+const ProductView = ( {CategoryFilter = 'All'} ) => {
+
     const products = useContext(ProductContext);
-    
-    const [categoryFilter, setCategoryFilter] = useState('All');
-    console.log(categoryFilter)
 
-    const filteredProducts = categoryFilter === 'All'
+    const filteredProducts = CategoryFilter === 'All'
         ? products 
-        : products.filter(product => product.category === categoryFilter);
-
-    const handleCategoryChange = (category) => {
-        setCategoryFilter(category);
-        console.log(categoryFilter)
-    }
+        : products.filter(product => product.category === CategoryFilter);
 
     return (
         <>
             <h2>Featured Product</h2>
             <hr />
-            <CategoryProvider><CategoryBar onSelectCategory={handleCategoryChange}/></CategoryProvider>
             <div class="container">
                 <div class="row">
                     {filteredProducts.map((product) => (
@@ -50,4 +41,4 @@ const Content3 = () => {
     )
 };
 
-export default Content3;
+export default ProductView;

@@ -1,12 +1,16 @@
-import React, { useContext, useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
-const QuantityButton = ({ updateQuantity }) => {
+const QuantityButton = ({ initialQuantity = 1, updateQuantity, canZero = false }) => {
 
-    const [quantity, setQuantity] = useState(1);
+    const [quantity, setQuantity] = useState(initialQuantity);
+
+    const updateQuantityDisplay = () => {
+        
+    };
 
     const handleDecreaseQuantity = () => {
         let newQ = quantity - 1
-        if(newQ < 1){return;}
+        if(!canZero){if(newQ < 1){return;}}
         setQuantity(newQ);
         updateQuantity(newQ);
     };

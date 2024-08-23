@@ -1,8 +1,10 @@
 // Header.js
-import {React, useState, useEffect} from 'react';
+import {React, useState, useEffect, useContext} from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Link, Outlet } from "react-router-dom";
 import { useSelector } from 'react-redux';
+import { CategoryProvider } from '../context';
+import CategoryDropdown from './Category/CategoryDropdown';
 
 const Header = () => {
 
@@ -42,23 +44,8 @@ const Header = () => {
                     <Link className="nav-link active" data-bs-dismiss="offcanvas" aria-current="page" to="/">หน้าแรก</Link>
                   </li>
 
-                  <li className="nav-item dropdown align-self-center">
-                    <Link className="nav-link dropdown-toggle" to="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                      สินค้าทั้งหมด
-                    </Link>
-                    {/* เมนูเลือก catagory ใช้ component เดียว */}
-                    <ul className="dropdown-menu">
-                      <li><Link className="dropdown-item" to="#" data-bs-dismiss="offcanvas">จอภาพ (Monitor)</Link></li>
-                      <li><Link className="dropdown-item" to="#" data-bs-dismiss="offcanvas">เคส (Case)</Link></li>
-                      <li><Link className="dropdown-item" to="#" data-bs-dismiss="offcanvas">พาวเวอร์ซัพพลาย (Power Supply)</Link></li>
-                      <li><Link className="dropdown-item" to="#" data-bs-dismiss="offcanvas">คีย์บอร์ด (Keyboard)</Link></li>
-                      <li><Link className="dropdown-item" to="#" data-bs-dismiss="offcanvas">เมนบอร์ด (Main board)</Link></li>
-                      <li><Link className="dropdown-item" to="#" data-bs-dismiss="offcanvas">CPU (ซีพียู)</Link></li>
-                      <li><Link className="dropdown-item" to="#" data-bs-dismiss="offcanvas">การ์ดจอ (Graphic Card)</Link></li>
-                      <li><Link className="dropdown-item" to="#" data-bs-dismiss="offcanvas">แรม (Ram)</Link></li>
-                      <li><Link className="dropdown-item" to="#" data-bs-dismiss="offcanvas">ฮาร์ดดิส (Harddisk)</Link></li>
-                    </ul>
-                  </li>
+                  <CategoryProvider><CategoryDropdown /></CategoryProvider>
+                  
                   <li className="nav-item align-self-center">
                     <Link className="nav-link" to="#" data-bs-dismiss="offcanvas">บริการ</Link>
                   </li>
