@@ -1,9 +1,15 @@
 import React, { useState, useEffect } from 'react';
 
 const QuantityButton = ({ initialQuantity = 1, updateQuantity, canZero = false }) => {
-
+    
     const [quantity, setQuantity] = useState(initialQuantity);
 
+    console.log("update Q B", {quantity}, {initialQuantity})
+
+    const resetQuantityDisplay = () => {
+        setQuantity(initialQuantity);
+    }
+    
     const updateQuantityDisplay = () => {
         
     };
@@ -22,11 +28,11 @@ const QuantityButton = ({ initialQuantity = 1, updateQuantity, canZero = false }
     };
 
     return (
-        <div>
-            <button onClick={handleDecreaseQuantity}>-</button>
-            <span> {quantity} </span>
-            <button onClick={handleIncreaseQuantity}>+</button>
-        </div>
+    <div className="quantity-selector">
+        <button className="quantity-btn" onClick={handleDecreaseQuantity}>-</button>
+        <span className="quantity-display">{quantity}</span>
+        <button className="quantity-btn" onClick={handleIncreaseQuantity}>+</button>
+    </div>
     );
 };
 

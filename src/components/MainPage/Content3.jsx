@@ -1,9 +1,10 @@
 import React, { useContext, useState } from "react";
 import { Link, BrowserRouter as Router, Route, Routes} from "react-router-dom";
 import ProductDetail from "../ProductDetail/ProductDetail";
-import { CartProvider, CategoryProvider, ProductContext } from "../../context";
+import { CartProvider, CategoryProvider, ProductContext, ProductProvider } from "../../context";
 import AddToCartButton from "../CartPage/AddToCartButton";
 import CategoryBar from "../Category/CategoryBar";
+import ProductView from "../Product/ProductView";
 
 const Content3 = () => {
     const products = useContext(ProductContext);
@@ -12,7 +13,7 @@ const Content3 = () => {
     console.log(categoryFilter)
 
     const filteredProducts = categoryFilter === 'All'
-        ? products 
+        ? products
         : products.filter(product => product.category === categoryFilter);
 
     const handleCategoryChange = (category) => {
@@ -22,30 +23,8 @@ const Content3 = () => {
 
     return (
         <>
-            <h2>Featured Product</h2>
-            <hr />
             <CategoryProvider><CategoryBar onSelectCategory={handleCategoryChange}/></CategoryProvider>
-            <div class="container">
-                <div class="row">
-                    {filteredProducts.map((product) => (
-                        <div class="col-sm-4">
-                            <div class="card">
-                                <div class="card-body">
-                                    <h2>{product.product_name}</h2>
-                                    <p><strong>Category:</strong> {product.category}</p>
-                                    <p><strong>Brand:</strong> {product.brand}</p>
-                                    <p><strong>Model:</strong> {product.model}</p>
-                                    <p><strong>Price:</strong> ${product.price}</p>
-                                    <p><strong>Stock Quantity:</strong> {product.stock_quantity}</p>
-                                    <p><strong>Description:</strong> {product.description}</p>
-                                    <Link to={`/product/${product.product_id}`} class="btn btn-primary">ดูสินค้า</Link>
-                                    <AddToCartButton product={product} />
-                                </div>
-                            </div>
-                        </div>
-                    ))}
-                </div>
-            </div>
+            <ProductProvider><ProductView CategoryFilter={categoryFilter}/></ProductProvider>
         </>
     )
 };

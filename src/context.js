@@ -108,7 +108,7 @@ export const CategoryContext = createContext();
 
 export const CategoryProvider = ({ children }) => {
     const [categories] = useState([
-        "Laptop", "Mouse", "Gaming Laptop", "Monitor", "RAM", "External HDD", "CPU"
+        "All", "Laptop", "Mouse", "Gaming Laptop", "Monitor", "RAM", "External HDD", "CPU"
     ]);
 
     return (

@@ -1,13 +1,28 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import { Link, BrowserRouter as Router, Route, Routes} from "react-router-dom";
 import ProductDetail from "../ProductDetail/ProductDetail";
 import { CartProvider, ProductContext } from "../../context";
 import AddToCartButton from "../CartPage/AddToCartButton";
 
+import { useSelector, useDispatch} from "react-redux";
+import { fetchData } from '../../stores/actions';
+
 const ProductView = ( {CategoryFilter = 'All'} ) => {
 
     const products = useContext(ProductContext);
 
+    const data = useSelector((state) => state.data);
+    const loading = useSelector((state) => state.loading);
+    const error = useSelector((state) => state.error);
+    const dispatch = useDispatch();
+    useEffect(() => {
+        dispatch(fetchData());
+        const logData = () => {
+            console.log(data);
+        };
+        logData();
+    }, [dispatch]);
+    console.log("asdasdasd" + data);
     const filteredProducts = CategoryFilter === 'All'
         ? products 
         : products.filter(product => product.category === CategoryFilter);
@@ -18,11 +33,11 @@ const ProductView = ( {CategoryFilter = 'All'} ) => {
             <hr />
             <div class="container">
                 <div class="row">
-                    {filteredProducts.map((product) => (
+                    {data.data.map((product) => (
                         <div class="col-sm-4">
                             <div class="card">
                                 <div class="card-body">
-                                    <h2>{product.product_name}</h2>
+                                    <h2>{product.name}</h2>
                                     <p><strong>Category:</strong> {product.category}</p>
                                     <p><strong>Brand:</strong> {product.brand}</p>
                                     <p><strong>Model:</strong> {product.model}</p>
@@ -42,3 +57,5 @@ const ProductView = ( {CategoryFilter = 'All'} ) => {
 };
 
 export default ProductView;
+
+//{filteredProducts.map((product) => (

@@ -9,22 +9,18 @@ const CartItem = (props) => {
     let {product, quantity} = props.data;
     const dispatch = useDispatch();
 
-    const [, forceUpdate] = useReducer(x => x + 1, 0);
-
     const handleUpdateQuantity = (quantity) => {
         dispatch(changeQuantity({
             product: product,
             quantity: quantity
         }));
-        forceUpdate();
     }
 
     const handleRemoveItem = () => {
         dispatch(changeQuantity({ 
             product: product,
-            quantity: 0 
+            quantity: 0
         }));
-        forceUpdate();
     };
 
     return (
