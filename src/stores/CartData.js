@@ -20,9 +20,10 @@ const cartSlice = createSlice({
     reducers: {
         addToCart(state, action){
             const {product, quantity} = action.payload;
-            const existingProduct = (state.items).findIndex(item => item.product.product_id === product.product_id);
+            const existingProduct = (state.items).findIndex(item => item.product.productId === product.productId);
             if(existingProduct >= 0){
                 state.items[existingProduct].quantity += quantity;
+                console.log("5555")
             }
             else{
                 state.items.push({product, quantity});
@@ -39,12 +40,12 @@ const cartSlice = createSlice({
 
         changeQuantity(state, action){
             const {product, quantity} = action.payload;
-            const existingProduct = (state.items).findIndex(item => item.product.product_id === product.product_id);
+            const existingProduct = (state.items).findIndex(item => item.product.productId === product.productId);
             if(quantity > 0){
                 state.items[existingProduct].quantity = quantity;
             }
             else{
-                state.items = (state.items).filter(item => item.product.product_id !== product.product_id)
+                state.items = (state.items).filter(item => item.product.productId !== product.productId)
             }
 
             const totals = calculateTotals(state.items);

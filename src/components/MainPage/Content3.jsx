@@ -7,7 +7,7 @@ import CategoryBar from "../Category/CategoryBar";
 import ProductView from "../Product/ProductView";
 
 const Content3 = () => {
-    const products = useContext(ProductContext);
+    const {products, loading, error} = useContext(ProductContext);
     
     const [categoryFilter, setCategoryFilter] = useState('All');
     console.log(categoryFilter)

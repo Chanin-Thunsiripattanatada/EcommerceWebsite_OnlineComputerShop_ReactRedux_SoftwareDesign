@@ -5,6 +5,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { CategoryProvider } from '../context';
 import CategoryDropdown from './Category/CategoryDropdown';
 import { toggleCartTabVisibility } from '../stores/CartData';
+import UserManageHeader from './User/UserManageHeader';
 
 const Header = () => {
   const [cartQuantity, setCartQuantity] = useState(0);
@@ -65,10 +66,7 @@ const Header = () => {
                     </button>
                     <span>{cartQuantity}</span>
                   </li>
-                  <li>
-                    <Link className="nav-link" to="/user">Account</Link>
-                    <Link className="nav-link" to="/login">Login</Link>
-                  </li>
+                  <UserManageHeader />
                 </ul>
               </div>
             </div>

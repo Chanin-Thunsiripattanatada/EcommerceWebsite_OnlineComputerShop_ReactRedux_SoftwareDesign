@@ -1,25 +1,52 @@
-// Register.js
 import React, { useState } from 'react';
+import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 const RegisterPage = () => {
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
+  const [error, setError] = useState('');
+  const [success, setSuccess] = useState('');
 
-  const handleSubmit = (e) => {
+  const navigate = useNavigate();
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
+
     if (password !== confirmPassword) {
       alert('Passwords do not match!');
       return;
     }
-    // Handle registration logic here (e.g., call an API)
-    console.log('Registration submitted', { username, email, password });
+
+    const registrationUserDto = {
+      username: username,
+      password: password,
+      confirmPassword: confirmPassword,
+      email: email
+    };
+    console.log(registrationUserDto)
+    try {
+      const response = await axios.post('http://localhost:8080/registration', registrationUserDto);
+      console.log('Registration successful:', response.data);
+      setSuccess('Registration successful! redirecting to login ...');
+      setError('');
+      await new Promise((resolve) => setTimeout(resolve, 1000));
+      navigate('/login');
+    } catch (error) {
+      console.error('Registration failed:', error.response);
+      const errorMessage = error.response?.data?.message || 'Registration failed.';
+      setError(errorMessage);
+      setSuccess('');
+    }
   };
 
   return (
     <div className="register-container">
       <h2>Register</h2>
+      {error && <div className="alert alert-danger">{error}</div>}
+      {success && <div className="alert alert-success">{success}</div>}
       <form onSubmit={handleSubmit}>
         <div className="form-group">
           <label htmlFor="username">Username</label>

@@ -3,16 +3,11 @@ import React, { useState, useEffect } from 'react';
 const QuantityButton = ({ initialQuantity = 1, updateQuantity, canZero = false }) => {
     
     const [quantity, setQuantity] = useState(initialQuantity);
-
-    console.log("update Q B", {quantity}, {initialQuantity})
-
-    const resetQuantityDisplay = () => {
-        setQuantity(initialQuantity);
-    }
     
-    const updateQuantityDisplay = () => {
-        
-    };
+
+    useEffect(() => {
+        setQuantity(initialQuantity);
+    }, [initialQuantity]);
 
     const handleDecreaseQuantity = () => {
         let newQ = quantity - 1

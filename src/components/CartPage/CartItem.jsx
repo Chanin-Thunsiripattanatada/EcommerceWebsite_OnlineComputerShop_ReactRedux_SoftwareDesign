@@ -25,7 +25,7 @@ const CartItem = (props) => {
 
     return (
         <div>
-            <h3>{product.product_name}</h3>
+            <h3>{product.name}</h3>
             <QuantityButton initialQuantity={quantity} updateQuantity={handleUpdateQuantity} canZero={true}/>
             <p><strong>Price:</strong> ${product.price}</p>
             <p><strong>Total:</strong> ${product.price * quantity}</p>

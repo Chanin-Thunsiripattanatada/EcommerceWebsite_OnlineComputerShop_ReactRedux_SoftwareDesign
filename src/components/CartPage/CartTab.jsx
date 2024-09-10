@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { toggleCartTabVisibility ,openCartTab, closeCartTab } from '../../stores/CartData';
 import CartItem from './CartItem';
 import CartSummary from './CartSummary';
+import QuantityButton from './QuantityButton';
 
 const CartTab = () => {
   const cartItems = useSelector(store => store.cart.items);
