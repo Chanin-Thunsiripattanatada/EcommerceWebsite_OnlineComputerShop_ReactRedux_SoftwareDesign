@@ -6,11 +6,12 @@ import { CategoryProvider } from '../context';
 import CategoryDropdown from './Category/CategoryDropdown';
 import { toggleCartTabVisibility } from '../stores/CartData';
 import UserManageHeader from './User/UserManageHeader';
+import { useNavigate } from 'react-router-dom';
 
 const Header = () => {
   const [cartQuantity, setCartQuantity] = useState(0);
   const cartItems = useSelector(store => store.cart.items);
-
+  const navigate = useNavigate();
   useEffect(() => {
     let total = 0;
     cartItems.forEach(item => total += item.quantity);

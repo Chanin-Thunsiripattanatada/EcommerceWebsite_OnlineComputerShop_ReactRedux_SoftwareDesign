@@ -6,7 +6,8 @@ const UserManageHeader = () => {
 
     const [LoggedIn, setLoggedIn] = useState(false);
 
-    const token = localStorage.getItem('authToken');
+    const token = sessionStorage.getItem('authToken');
+    
     const navigate = useNavigate();
     console.log("token: " + token)
     return (
@@ -24,7 +25,7 @@ const UserManageHeader = () => {
             {token && (
                 <li>
                     <button className="nav-link" onClick={() => {
-                        localStorage.removeItem('authToken');
+                        sessionStorage.removeItem('authToken');
                         navigate("/");
                     }}>Logout</button>
                 </li>

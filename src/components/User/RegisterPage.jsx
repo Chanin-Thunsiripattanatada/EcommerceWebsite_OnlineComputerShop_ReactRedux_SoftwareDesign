@@ -26,6 +26,7 @@ const RegisterPage = () => {
       confirmPassword: confirmPassword,
       email: email
     };
+    
     console.log(registrationUserDto)
     try {
       const response = await axios.post('http://localhost:8080/registration', registrationUserDto);

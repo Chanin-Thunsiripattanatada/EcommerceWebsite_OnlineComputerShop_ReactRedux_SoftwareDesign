@@ -12,9 +12,10 @@ import AboutMePage from './components/AboutMePage/AboutMePage';
 import CartTab from './components/CartPage/CartTab';
 import CategoryView from './components/Category/CategoryView';
 import Checkout from './components/CheckOut/Checkout';
-import UserDetail from './components/User/UserInfo';
+import UserDetail from './components/User/AccountPage';
 import LoginPage from './components/User/LoginPage';
 import RegisterPage from './components/User/RegisterPage';
+import ProductView from './components/Product/ProductView';
 
 function App() {
 

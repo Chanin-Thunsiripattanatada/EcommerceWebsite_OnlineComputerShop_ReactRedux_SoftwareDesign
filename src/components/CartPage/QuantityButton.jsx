@@ -3,7 +3,6 @@ import React, { useState, useEffect } from 'react';
 const QuantityButton = ({ initialQuantity = 1, updateQuantity, canZero = false }) => {
     
     const [quantity, setQuantity] = useState(initialQuantity);
-    
 
     useEffect(() => {
         setQuantity(initialQuantity);

@@ -1,4 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
+import axios from 'axios';
 
 const initialState = {
     id: 0,
@@ -6,6 +7,7 @@ const initialState = {
     password: '',
     email: '',
     roles: [],
+    customerInfo: {}
 };
 
 const userSlice = createSlice({
@@ -28,10 +30,44 @@ const userSlice = createSlice({
         },
         clearUser(state) {
             return initialState;
+        },
+
+        setCustomerInfo(state, action) {
+            const { customerInfo } = action.payload;
+            state.customerInfo = customerInfo;
         }
     },
 });
 
-export const { setUserInfo, updateUser, clearUser } = userSlice.actions;
+export const fetchUserInfo = (id) => async (dispatch) => {
+    try {
+      const authToken = sessionStorage.getItem('authToken'); // Get the token from local storage
+      const response = await axios.get(`http://localhost:8080/user/customers/${id}`, {
+        headers: {
+          'Authorization': `Bearer ${authToken}`,
+        },
+      });
+      dispatch(setCustomerInfo(response.data));
+    } catch (error) {
+      console.error('Failed to fetch Customer info:', error);
+    }
+};
+
+export const fetchCustomerInfo = (id) => async (dispatch) => {
+    try {
+      const authToken = sessionStorage.getItem('authToken'); // Get the token from local storage
+      const response = await axios.get(`http://localhost:8080/user/customers/${id}`, {
+        headers: {
+          'Authorization': `Bearer ${authToken}`,
+        },
+      });
+      dispatch(setCustomerInfo(response.data));
+    } catch (error) {
+      console.error('Failed to fetch Customer info:', error);
+    }
+};
+
+
+export const { setUserInfo, updateUser, clearUser, setCustomerInfo } = userSlice.actions;
 
 export default userSlice.reducer;
