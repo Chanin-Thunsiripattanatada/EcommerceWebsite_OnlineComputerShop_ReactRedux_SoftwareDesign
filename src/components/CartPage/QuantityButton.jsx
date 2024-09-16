@@ -1,12 +1,16 @@
-import React, { useContext, useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
-const QuantityButton = ({ updateQuantity }) => {
+const QuantityButton = ({ initialQuantity = 1, updateQuantity, canZero = false }) => {
+    
+    const [quantity, setQuantity] = useState(initialQuantity);
 
-    const [quantity, setQuantity] = useState(1);
+    useEffect(() => {
+        setQuantity(initialQuantity);
+    }, [initialQuantity]);
 
     const handleDecreaseQuantity = () => {
         let newQ = quantity - 1
-        if(newQ < 1){return;}
+        if(!canZero){if(newQ < 1){return;}}
         setQuantity(newQ);
         updateQuantity(newQ);
     };
@@ -18,11 +22,11 @@ const QuantityButton = ({ updateQuantity }) => {
     };
 
     return (
-        <div>
-            <button onClick={handleDecreaseQuantity}>-</button>
-            <span> {quantity} </span>
-            <button onClick={handleIncreaseQuantity}>+</button>
-        </div>
+    <div className="quantity-selector">
+        <button className="quantity-btn" onClick={handleDecreaseQuantity}>-</button>
+        <span className="quantity-display">{quantity}</span>
+        <button className="quantity-btn" onClick={handleIncreaseQuantity}>+</button>
+    </div>
     );
 };
 

@@ -17,7 +17,7 @@ const MainPage = () => {
 
                 <div className="row pt-4">
                     <div className="col">
-                        <Content2 />
+                        {/*<Content2 />*/}
                     </div>
                 </div>
                 <div className="row pt-4">
@@ -27,7 +27,6 @@ const MainPage = () => {
                         </ProductProvider>
                     </div>
                 </div>
-                <CartTab />
             </div>
         </>
     )

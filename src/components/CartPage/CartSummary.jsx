@@ -1,10 +1,16 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 
-const CartSummary = ({ totalPrice, onCheckout }) => {
+const CartSummary = ({ }) => {
+
+    const cartItems = useSelector(store => store.cart.items);
+    const totalAmount = useSelector(store => store.cart.totalAmount);
+    const totalPrice = useSelector(store => store.cart.totalPrice);
+
     return (
         <div className="cart-summary">
-            <h3>Total Price: ${totalPrice.toFixed(2)}</h3>
-            <button onClick={onCheckout}>Checkout</button>
+            <p>Total Amount: {totalAmount}</p>
+            <p>Total Price: ${totalPrice.toFixed(2)}</p>
         </div>
     );
 };
