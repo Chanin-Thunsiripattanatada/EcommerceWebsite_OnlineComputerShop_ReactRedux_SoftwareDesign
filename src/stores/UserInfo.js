@@ -33,7 +33,8 @@ const userSlice = createSlice({
         },
 
         setCustomerInfo(state, action) {
-            const { customerInfo } = action.payload;
+            const customerInfo = action.payload;
+            console.log("asdasdasd : " + customerInfo)
             state.customerInfo = customerInfo;
         }
     },
@@ -41,13 +42,14 @@ const userSlice = createSlice({
 
 export const fetchUserInfo = (id) => async (dispatch) => {
     try {
-      const authToken = sessionStorage.getItem('authToken'); // Get the token from local storage
-      const response = await axios.get(`http://localhost:8080/user/customers/${id}`, {
+      const authToken = sessionStorage.getItem('authToken');
+      const response = await axios.get(`http://localhost:8080/api/user/customers/${id}`, {
         headers: {
           'Authorization': `Bearer ${authToken}`,
         },
       });
-      dispatch(setCustomerInfo(response.data));
+      //console.log("response : " +JSON.stringify(response.data, null, 2));
+      dispatch(setUserInfo(response.data.user));
     } catch (error) {
       console.error('Failed to fetch Customer info:', error);
     }
@@ -55,12 +57,13 @@ export const fetchUserInfo = (id) => async (dispatch) => {
 
 export const fetchCustomerInfo = (id) => async (dispatch) => {
     try {
-      const authToken = sessionStorage.getItem('authToken'); // Get the token from local storage
-      const response = await axios.get(`http://localhost:8080/user/customers/${id}`, {
+      const authToken = sessionStorage.getItem('authToken');
+      const response = await axios.get(`http://localhost:8080/api/user/customers/${id}`, {
         headers: {
           'Authorization': `Bearer ${authToken}`,
         },
       });
+      //console.log("response : " +JSON.stringify(response.data, null, 2));
       dispatch(setCustomerInfo(response.data));
     } catch (error) {
       console.error('Failed to fetch Customer info:', error);

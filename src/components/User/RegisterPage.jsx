@@ -29,7 +29,7 @@ const RegisterPage = () => {
     
     console.log(registrationUserDto)
     try {
-      const response = await axios.post('http://localhost:8080/registration', registrationUserDto);
+      const response = await axios.post('http://localhost:8080/api/registration', registrationUserDto);
       console.log('Registration successful:', response.data);
       setSuccess('Registration successful! redirecting to login ...');
       setError('');
