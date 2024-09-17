@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { setUserInfo, updateUser, clearUser } from '../../stores/UserInfo';
 
 import { fetchCustomerInfo, fetchUserInfo } from '../../stores/UserInfo';
+import OrderPage from '../Order/OrderPage';
 
 const AccountPage = () => {
     const dispatch = useDispatch();
@@ -33,6 +34,7 @@ const AccountPage = () => {
             <p><strong>Shipping Address:</strong> {customerInfo.shippingAddress}</p>
             <p><strong>Billing Address:</strong> {customerInfo.billingAddress}</p>
 
+            <OrderPage />
 
         </div>
     );
