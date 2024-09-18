@@ -11,7 +11,7 @@ const initialState = {
         orderItems: [],
     }
 ]
-    
+
 }
 
 const orderDataSlice = createSlice({

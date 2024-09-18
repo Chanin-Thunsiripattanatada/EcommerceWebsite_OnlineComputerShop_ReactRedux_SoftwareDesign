@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import CartItem from '../CartPage/CartItem';
+import OrderItem from './OrderItem';
 
 const OrderRecord = ({ order }) => {
     const [isExpanded, setIsExpanded] = useState(false);
@@ -9,24 +9,41 @@ const OrderRecord = ({ order }) => {
     };
 
     return (
-        <div className="order-record">
-            <div className="order-summary" onClick={toggleExpand}>
-                <h3>Order #{order.orderId}</h3>
-                <p><strong>Date:</strong> {new Date(order.orderDate).toLocaleDateString()}</p>
-                <p><strong>Status:</strong> {order.shippingStatus}</p>
-                <p><strong>Total:</strong> ${order.totalAmount.toFixed(2)}</p>
-                <button>{isExpanded ? 'Hide Details' : 'Show Details'}</button>
-            </div>
-            
+        <>
+            <tr>
+                <td>{order.orderId}</td>
+                <td>{new Date(order.orderDate).toLocaleDateString()}</td>
+                <td>{order.shippingStatus}</td>
+                <td>${order.totalAmount.toFixed(2)}</td>
+                <td>
+                    <button onClick={toggleExpand}>
+                        {isExpanded ? 'Hide Details' : 'Show Details'}
+                    </button>
+                </td>
+            </tr>
             {isExpanded && (
-                <div className="order-items">
-                    <h4>Order Items</h4>
-                    {order.orderItems.map(item => (
-                        <CartItem key={item.itemId} data={item} />
-                    ))}
-                </div>
+                <tr>
+                    <td colSpan="5">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Product Name</th>
+                                    <th>Description</th>
+                                    <th>Price</th>
+                                    <th>Quantity</th>
+                                    <th>Total</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {order.orderItems.map(item => (
+                                    <OrderItem key={item.orderItemId} item={item} />
+                                ))}
+                            </tbody>
+                        </table>
+                    </td>
+                </tr>
             )}
-        </div>
+        </>
     );
 };
 

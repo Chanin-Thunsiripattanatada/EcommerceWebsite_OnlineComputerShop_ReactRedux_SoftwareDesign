@@ -2,38 +2,44 @@ import React, { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { clearCart } from "../../stores/CartData"
+import { placeOrder } from "../../redux/actions/orders";
 
 const Checkout = () => {
+
+    const orders = useSelector((state) => state.orders)
     const cartItems = useSelector(store => store.cart.items);
+
     const totalAmount = useSelector(store => store.cart.totalAmount);
     const totalPrice = useSelector(store => store.cart.totalPrice);
 
     const dispatch = useDispatch();
-
-    const [shippingInfo, setShippingInfo] = useState({
-        name: "",
-        address: "",
-        city: "",
-        zipCode: "",
-        country: "",
-    });
-
-    const [paymentMethod, setPaymentMethod] = useState("Credit Card");
     const [orderPlaced, setOrderPlaced] = useState(false);
     const navigate = useNavigate();
 
-    const handleInputChange = (e) => {
-        const { name, value } = e.target;
-        setShippingInfo({ ...shippingInfo, [name]: value });
-    };
-
-    const handlePaymentChange = (e) => {
-        setPaymentMethod(e.target.value);
-    };
-
     const handlePlaceOrder = () => {
-        // Handle order placement logic (API call, etc.)
-        console.log("Order Placed:", { cartItems, shippingInfo, paymentMethod });
+        console.log("Order Placed:", { cartItems });
+        
+        const token = sessionStorage.getItem("authToken");
+        const customerId = sessionStorage.getItem("customerId");
+
+        const OrderCreationData = {
+            orderItems: [],
+            shippingStatus: 'Processing',
+            totalAmount: totalAmount
+        }
+
+        for (const cartItem of cartItems) {
+            OrderCreationData.orderItems.push(
+                {
+                    productId: cartItem.product.productId,
+                    quantity: cartItem.quantity,
+                    price: cartItem.product.price * cartItem.quantity 
+                }
+            );
+        }
+
+        dispatch(placeOrder(token, customerId, OrderCreationData))
+
         dispatch(clearCart()); // Clear cart after placing order
         setOrderPlaced(true);
         setTimeout(() => navigate("/order-confirmation"), 3000); // Redirect to order confirmation after 3 seconds
@@ -62,72 +68,7 @@ const Checkout = () => {
                         <p>Total Amount: {totalAmount}</p>
                         <p>Total Price: ${totalPrice.toFixed(2)}</p>
                     </div>
-
-                    <div className="shipping-info">
-                        <h3>Shipping Information</h3>
-                        <form className="shipping-form">
-                            <div className="form-group">
-                                <input
-                                    type="text"
-                                    name="name"
-                                    placeholder="Full Name"
-                                    value={shippingInfo.name}
-                                    onChange={handleInputChange}
-                                    required
-                                />
-                            </div>
-                            <div className="form-group">
-                                <input
-                                    type="text"
-                                    name="address"
-                                    placeholder="Address"
-                                    value={shippingInfo.address}
-                                    onChange={handleInputChange}
-                                    required
-                                />
-                            </div>
-                            <div className="form-group">
-                                <input
-                                    type="text"
-                                    name="city"
-                                    placeholder="City"
-                                    value={shippingInfo.city}
-                                    onChange={handleInputChange}
-                                    required
-                                />
-                            </div>
-                            <div className="form-group">
-                                <input
-                                    type="text"
-                                    name="zipCode"
-                                    placeholder="ZIP Code"
-                                    value={shippingInfo.zipCode}
-                                    onChange={handleInputChange}
-                                    required
-                                />
-                            </div>
-                            <div className="form-group">
-                                <input
-                                    type="text"
-                                    name="country"
-                                    placeholder="Country"
-                                    value={shippingInfo.country}
-                                    onChange={handleInputChange}
-                                    required
-                                />
-                            </div>
-                        </form>
-                    </div>
-
-                    <div className="payment-method">
-                        <h3>Payment Method</h3>
-                        <select value={paymentMethod} onChange={handlePaymentChange}>
-                            <option value="Credit Card">Credit Card</option>
-                            <option value="PayPal">PayPal</option>
-                            <option value="Bank Transfer">Bank Transfer</option>
-                        </select>
-                    </div>
-
+                    
                     <button className="place-order-btn" onClick={handlePlaceOrder}>
                         Place Order
                     </button>

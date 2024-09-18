@@ -1,6 +1,6 @@
 import React, { useContext, useState } from "react";
 import { Link, BrowserRouter as Router, Route, Routes} from "react-router-dom";
-import ProductDetail from "../ProductDetail/ProductDetail";
+import ProductDetail from "../Product/ProductDetail";
 import { CartProvider, CategoryProvider, ProductContext, ProductProvider } from "../../context";
 import AddToCartButton from "../CartPage/AddToCartButton";
 import CategoryBar from "../Category/CategoryBar";

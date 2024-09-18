@@ -5,7 +5,7 @@ import Header from './components/Header';
 import Footer from './components/Footer';
 import MainPage from './components/MainPage/MainPage';
 
-import ProductDetail from './components/ProductDetail/ProductDetail';
+import ProductDetail from './components/Product/ProductDetail';
 import { CategoryProvider, ProductProvider } from './context';
 
 import AboutMePage from './components/AboutMePage/AboutMePage';
