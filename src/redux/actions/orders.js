@@ -1,32 +1,12 @@
 import {
-    CREATE_ORDER,
     RETRIEVE_ORDERS,
-    UPDATE_ORDER,
-    DELETE_ORDER,
-
+    
     PLACE_ORDER_REQUEST,
     PLACE_ORDER_SUCCESS,
     PLACE_ORDER_FAILURE,
 } from "./types";
   
 import OrderDataService from "../services/orders.service";
-
-  
-// Action for creating a order
-export const createOrder = (token,data) => async (dispatch) => {
-    try {
-        const res = await OrderDataService.create(token,data);
-  
-        dispatch({
-            type: CREATE_ORDER,
-            payload: res.data,
-        });
-
-        return Promise.resolve(res.data);
-    } catch (err) {
-        return Promise.reject(err);
-    }
-};
 
 // Action for retrieving all orders
 export const retrieveOrders = (token, customerId) => async (dispatch) => {
@@ -55,37 +35,6 @@ export const retrieveOrders = (token, customerId) => async (dispatch) => {
         dispatch({ type: 'FETCH_PRODUCTS_ERROR', payload: err.message });
       }
 };
-  
-// Action for updating a order
-export const updateOrder = (token, id, data) => async (dispatch) => {
-    try {
-        const res = await OrderDataService.update(token, id, data);
-  
-        dispatch({
-            type: UPDATE_ORDER,
-            payload: data,
-        });
-  
-        return Promise.resolve(res.data);
-    } catch (err) {
-        return Promise.reject(err);
-    }
-};
-  
-// Action for deleting a order
-export const deleteOrder = (token, id) => async (dispatch) => {
-    try {
-        await OrderDataService.delete(token, id);
-  
-        dispatch({
-            type: DELETE_ORDER,
-            payload: { id },
-        });
-    } catch (err) {
-        console.log(err);
-    }
-};
-
 
 
 

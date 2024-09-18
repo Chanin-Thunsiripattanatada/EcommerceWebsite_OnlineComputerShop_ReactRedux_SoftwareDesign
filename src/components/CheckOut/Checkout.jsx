@@ -40,7 +40,7 @@ const Checkout = () => {
 
         dispatch(placeOrder(token, customerId, OrderCreationData))
 
-        dispatch(clearCart()); // Clear cart after placing order
+        dispatch(clearCart()); // Clear cart
         setOrderPlaced(true);
         setTimeout(() => navigate("/order-confirmation"), 3000); // Redirect to order confirmation after 3 seconds
     };
@@ -68,7 +68,7 @@ const Checkout = () => {
                         <p>Total Amount: {totalAmount}</p>
                         <p>Total Price: ${totalPrice.toFixed(2)}</p>
                     </div>
-                    
+
                     <button className="place-order-btn" onClick={handlePlaceOrder}>
                         Place Order
                     </button>

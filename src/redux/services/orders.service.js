@@ -25,30 +25,6 @@ class OrderDataService {
         });
     }
 
-    create(token, data) {
-        return http.post("/user/orders", data, {
-            headers: {
-                'Authorization': `Bearer ${token}`
-            }
-        });
-    }
-
-    update(token, id, data) {
-        return http.put(`/user/orders/${id}`, data, {
-            headers: {
-                'Authorization': `Bearer ${token}`
-            }
-        });
-    }
-
-    delete(token, id) {
-        return http.delete(`/admin/orders/${id}`, {
-            headers: {
-                'Authorization': `Bearer ${token}`
-            }
-        });
-    }
-
     getByCustomerId(token, customerId) {
         return http.get(`/user/orders/customer/${customerId}`, {
             headers: {
