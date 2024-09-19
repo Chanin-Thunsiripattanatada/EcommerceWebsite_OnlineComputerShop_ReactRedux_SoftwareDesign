@@ -16,6 +16,7 @@ import UserDetail from './components/User/AccountPage';
 import LoginPage from './components/User/LoginPage';
 import RegisterPage from './components/User/RegisterPage';
 import ProductView from './components/Product/ProductView';
+import EditCustomerDetail from './components/User/EditCustomerDetail';
 
 function App() {
 
@@ -34,9 +35,9 @@ function App() {
             <Route path='/เกี่ยวกับเรา' element={<AboutMePage />} />
             <Route path="/checkout" element={<Checkout />} />
             <Route path="/user" element={<UserDetail />} />
+            <Route path="/user/editCustomerDetail" element={<EditCustomerDetail />} />
             <Route path="/login" element={<LoginPage />} />
             <Route path="/register" element={<RegisterPage />} />
-
           </Routes>
         </main>
         <CartTab />

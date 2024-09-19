@@ -8,13 +8,12 @@ const initialState = [];
   
 function userReducer(user = initialState, action) {
     const { type, payload } = action;
-
     switch (type) {
         case REGISTER_USER:
         return payload;
         
         case FIND_USER_BY_ID:
-        return payload.user;
+        return payload;
         
         default:
         return user;

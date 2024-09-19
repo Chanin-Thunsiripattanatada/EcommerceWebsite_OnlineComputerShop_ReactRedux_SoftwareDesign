@@ -5,7 +5,6 @@ import { Link } from 'react-router-dom';
 import axios from 'axios';
 
 import { useNavigate } from 'react-router-dom';
-import { setCustomerInfo, setUserInfo } from '../../stores/UserInfo';
 
 const LoginPage = () => {
     const [username, setUsername] = useState('');
@@ -37,9 +36,6 @@ const LoginPage = () => {
 
             console.log("user : " + JSON.stringify(response.data.user, null, 2))
             console.log("customer : " + JSON.stringify(response.data.customer, null, 2))
-
-            dispatch(setUserInfo(response.data.user));
-            dispatch(setCustomerInfo(response.data.customer));
             
             await new Promise((resolve) => setTimeout(resolve, 1000));
             navigate('/');

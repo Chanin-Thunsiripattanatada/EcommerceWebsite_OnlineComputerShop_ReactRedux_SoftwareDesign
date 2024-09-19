@@ -14,7 +14,7 @@ const OrderRecord = ({ order }) => {
                 <td>{order.orderId}</td>
                 <td>{new Date(order.orderDate).toLocaleDateString()}</td>
                 <td>{order.shippingStatus}</td>
-                <td>${order.totalAmount.toFixed(2)}</td>
+                <td>{order.totalAmount}</td>
                 <td>
                     <button onClick={toggleExpand}>
                         {isExpanded ? 'Hide Details' : 'Show Details'}

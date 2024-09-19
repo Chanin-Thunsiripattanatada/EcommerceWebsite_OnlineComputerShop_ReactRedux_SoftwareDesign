@@ -15,7 +15,6 @@ const OrderHistory = () => {
 
     const dispatch = useDispatch();
     const orders = useSelector((state => state.orders));
-    console.log("ORDERS === " + orders)
 
     const token = sessionStorage.getItem("authToken");
     const customerId = sessionStorage.getItem("customerId");

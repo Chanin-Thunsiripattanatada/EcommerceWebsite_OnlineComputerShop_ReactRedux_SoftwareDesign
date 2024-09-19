@@ -15,26 +15,13 @@ function customerReducer(customers = initialState, action) {
     const { type, payload } = action;
 
     switch (type) {
-        case CREATE_CUSTOMER:
-            return [...customers, payload];
-
         case RETRIEVE_CUSTOMERS:
             return payload;
         
         case UPDATE_CUSTOMER:
-            return customers.map((customer) => {
-                if (customer.customerId === payload.customerId) {
-                    return {
-                        ...customer,
-                        ...payload,
-                    };
-                } else {
-                    return customer;
-                }
-            });
+            return payload
 
         case FIND_CUSTOMERS_BY_NAME:
-            // Assuming payload contains the filtered list of customers by name
             return payload;
 
         default:
