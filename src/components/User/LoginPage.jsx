@@ -1,10 +1,11 @@
 // Login.js
 import React, { useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 
 import { useNavigate } from 'react-router-dom';
+import { setCustomerInfo, setUserInfo } from '../../stores/UserInfo';
 
 const LoginPage = () => {
     const [username, setUsername] = useState('');
@@ -15,6 +16,8 @@ const LoginPage = () => {
 
     const navigate = useNavigate();
 
+    const dispatch = useDispatch();
+
     const handleSubmit = async (e) => {
         e.preventDefault();
         const login = {
@@ -23,12 +26,21 @@ const LoginPage = () => {
           };
       
           try {
-            const response = await axios.post('http://localhost:8080/auth', login);
+            const response = await axios.post('http://localhost:8080/api/auth', login);
             console.log('Login successful:', response.data);
             setSuccess('Login successful! let`s shopping!');
             setError('');
             //or localStorage
             sessionStorage.setItem('authToken', response.data.token);
+            sessionStorage.setItem('userId', response.data.user.id);
+            sessionStorage.setItem('customerId', response.data.customer.customerId);
+
+            console.log("user : " + JSON.stringify(response.data.user, null, 2))
+            console.log("customer : " + JSON.stringify(response.data.customer, null, 2))
+
+            dispatch(setUserInfo(response.data.user));
+            dispatch(setCustomerInfo(response.data.customer));
+            
             await new Promise((resolve) => setTimeout(resolve, 1000));
             navigate('/');
           } catch (error) {

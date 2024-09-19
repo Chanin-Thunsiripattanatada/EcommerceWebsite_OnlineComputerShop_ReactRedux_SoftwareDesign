@@ -26,6 +26,8 @@ const UserManageHeader = () => {
                 <li>
                     <button className="nav-link" onClick={() => {
                         sessionStorage.removeItem('authToken');
+                        sessionStorage.removeItem('userId');
+                        sessionStorage.removeItem('customerId');
                         navigate("/");
                     }}>Logout</button>
                 </li>

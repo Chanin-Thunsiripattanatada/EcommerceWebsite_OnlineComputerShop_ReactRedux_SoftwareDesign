@@ -11,7 +11,7 @@ const CartTab = () => {
   const cartTabVisibility = useSelector(store => store.cart.cartTabVisibility);
   const dispatch = useDispatch();
   const cartTabRef = useRef(null);
-
+  console.log("cartItems === " + cartItems)
   const handleOpenCartTab = () => {
     dispatch(toggleCartTabVisibility());
   };
