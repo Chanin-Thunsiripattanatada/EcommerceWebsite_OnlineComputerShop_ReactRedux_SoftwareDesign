@@ -5,6 +5,8 @@ import Header from './components/Header';
 import Footer from './components/Footer';
 import MainPage from './components/MainPage/MainPage';
 import AboutMePage from './components/AboutMePage/AboutMePage';
+import ShoppingCart from './components/ShoppingCart/ShoppingCart';
+
 function App() {
   return (
     <div className="App">
@@ -14,6 +16,7 @@ function App() {
           <Routes path="/">
             <Route index element={<MainPage />} />
             <Route path='เกี่ยวกับเรา' element={<AboutMePage />} />
+            <Route path='ตระกร้าสินค้า' element={<ShoppingCart />} />
           </Routes>
         </main>
         <Footer />
