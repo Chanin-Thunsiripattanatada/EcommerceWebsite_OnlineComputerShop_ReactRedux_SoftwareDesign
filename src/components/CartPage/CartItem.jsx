@@ -1,12 +1,13 @@
-import {React , useEffect, useReducer} from 'react';
+import { React, useEffect, useReducer } from 'react';
 import QuantityButton from './QuantityButton';
 import { useDispatch, useSelector } from 'react-redux';
 import { changeQuantity } from '../../stores/CartData';
+import { Button } from 'react-bootstrap';
 
 
 const CartItem = (props) => {
 
-    let {product, quantity} = props.data;
+    let { product, quantity } = props.data;
     const dispatch = useDispatch();
 
     const handleUpdateQuantity = (quantity) => {
@@ -17,20 +18,34 @@ const CartItem = (props) => {
     }
 
     const handleRemoveItem = () => {
-        dispatch(changeQuantity({ 
+        dispatch(changeQuantity({
             product: product,
             quantity: 0
         }));
     };
 
     return (
-        <div>
-            <h3>{product.name}</h3>
-            <QuantityButton initialQuantity={quantity} updateQuantity={handleUpdateQuantity} canZero={true}/>
-            <p><strong>Price:</strong> ${product.price}</p>
-            <p><strong>Total:</strong> ${product.price * quantity}</p>
-            <button onClick={handleRemoveItem}>Remove Item</button>
-        </div>
+
+        <tr>
+            <th>{product.image && product.image.imageData ? (
+                                        <img
+                                            src={`http://localhost:8080/api/image/${product.image.id}`}
+                                            alt={product.name || 'Product Image'}
+                                            width={50}
+                                            height={50}
+                                            className="img-fluid"
+                                        />
+                                    ) : (
+                                        <span>No Image</span>
+                                    )}</th>
+            <th><h5>{product.name}</h5></th>
+            <th>฿{product.price}</th>
+            <th>฿{product.price * quantity}</th>
+            <th><QuantityButton initialQuantity={quantity} updateQuantity={handleUpdateQuantity} canZero={true} /></th>
+            <th><Button variant="danger" onClick={handleRemoveItem}>ลบออกจากตระกร้า</Button></th>
+        </tr>
+        
+
     );
 };
 

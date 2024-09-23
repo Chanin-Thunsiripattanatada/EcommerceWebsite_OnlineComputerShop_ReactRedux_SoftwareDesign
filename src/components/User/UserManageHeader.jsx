@@ -1,38 +1,38 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Link } from "react-router-dom";
+import { useAuth } from '../../auth/AuthContext';
 
 const UserManageHeader = () => {
 
-    const [LoggedIn, setLoggedIn] = useState(false);
-
-    const token = sessionStorage.getItem('authToken');
-    
+    const { userLogout, token } = useAuth();
     const navigate = useNavigate();
     console.log("token: " + token)
     return (
-        <div>
+        <>
             {token && (
-                <li>
-                    <Link className="nav-link" to="/user">Account</Link>
+                <li className="nav-item align-self-center">
+                    <Link className="nav-link" to="/user">
+                        <img src={require('../../assets/image/icons8-user-96.png')} width={50} alt="" />
+                    </Link>
                 </li>
             )}
             {!token && (
-                <li>
+                <li className="nav-item align-self-center">
                     <Link className="nav-link" to="/login">Login</Link>
                 </li>
             )}
             {token && (
-                <li>
-                    <button className="nav-link" onClick={() => {
-                        sessionStorage.removeItem('authToken');
-                        sessionStorage.removeItem('userId');
-                        sessionStorage.removeItem('customerId');
-                        navigate("/");
-                    }}>Logout</button>
+                <li className="nav-item align-self-center">
+                    <button className="nav-link"
+                        onClick={() => {
+                            userLogout();
+                            navigate("/");
+                        }}
+                    >Logout</button>
                 </li>
             )}
-        </div>
+        </>
     );
 }
 

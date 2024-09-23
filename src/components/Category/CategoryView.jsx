@@ -1,20 +1,25 @@
-import React, { useContext } from "react";
+import React, { useEffect } from "react";
 import { useParams } from "react-router-dom";
-import { CategoryContext, ProductProvider } from "../../context";
-import AddToCartButton from "../CartPage/AddToCartButton";
 import ProductView from "../Product/ProductView";
 
 const CategoryView = () => {
+    const { categoryName } = useParams();
 
-    const categories = useContext(CategoryContext);
-    const { category } = useParams();
-    
+    useEffect(() => {
+        // This code will run whenever categoryName changes
+        console.log(`Category changed to: ${categoryName}`);
+        
+        // You can add any fetch logic or other side effects here
+        // Example:
+        // fetchProductsByCategory(categoryName);
+        
+    }, [categoryName]); // Dependency array: runs effect when categoryName changes
+
     return (
         <div>
-            <h1>{category}</h1>
-            <ProductProvider><ProductView CategoryFilter={category}/></ProductProvider>
+            <h1>{categoryName}</h1>
+            <ProductView CategoryFilter={categoryName} />
         </div>
-        
     );
 };
 

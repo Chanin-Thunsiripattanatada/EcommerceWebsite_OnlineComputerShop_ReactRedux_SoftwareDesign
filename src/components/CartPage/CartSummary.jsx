@@ -9,8 +9,8 @@ const CartSummary = ({ }) => {
 
     return (
         <div className="cart-summary">
-            <p>Total Amount: {totalAmount}</p>
-            <p>Total Price: ${totalPrice.toFixed(2)}</p>
+            <p><strong>จำนวนสินค้าทั้งหมด:</strong> {totalAmount}</p>
+            <p><strong>ราคารวม:</strong> ฿{totalPrice.toFixed(2)}</p>
         </div>
     );
 };

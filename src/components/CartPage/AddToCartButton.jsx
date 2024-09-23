@@ -24,7 +24,7 @@ const AddToCartButton = ({ product }) => {
     return (
         <div>
             <QuantityButton updateQuantity = {handleUpdateQuantity} />
-            <button className="btn btn-primary" onClick={handleAddToCart}>Add to Cart</button>
+            <button className="btn btn-primary" onClick={handleAddToCart}>เพิ่มใส่ตระกร้า</button>
         </div>
     );
 };
