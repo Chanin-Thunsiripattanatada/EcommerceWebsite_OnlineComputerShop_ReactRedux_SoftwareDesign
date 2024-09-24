@@ -71,17 +71,11 @@ const Checkout = () => {
             }
             // Clear the cart after placing the order
             await dispatch(clearCart());
-            // Show the confirmation modal
-            // setShowView(true);
             navigate('/user/followorder');
         } else {
             alert("ไม่สามารถสั่งซื้อได้: " + response.error);
         }
     };
-    
-    
-
-    // const handleCloseView = () => setShowView(false);
 
     return (
         <>
@@ -122,7 +116,6 @@ const Checkout = () => {
                     </div>
                 </div>
             </div>
-            {/* <OrderConfirmModal show={showView} handleClose={handleCloseView} modalData={modalData} /> */}
         </>
     );
 };
