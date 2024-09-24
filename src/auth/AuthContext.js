@@ -10,10 +10,27 @@ function AuthProvider({ children }) {
   const [token, setToken] = useState(localStorage.getItem('token'));
 
   useEffect(() => {
-    const storedUser = JSON.parse(localStorage.getItem('user'));
-    const storedCustomer = JSON.parse(localStorage.getItem('customer'));
-    setUser(storedUser);
-    setCustomer(storedCustomer);
+    const storedUser = localStorage.getItem('user');
+    const storedCustomer = localStorage.getItem('customer');
+    
+    if (storedUser) {
+      try {
+        setUser(JSON.parse(storedUser));
+      } catch (error) {
+        console.error('Error parsing stored user data:', error);
+        setUser(null);
+      }
+    }
+  
+    if (storedCustomer) {
+      try {
+        setCustomer(JSON.parse(storedCustomer));
+      } catch (error) {
+        console.error('Error parsing stored customer data:', error);
+        setCustomer(null);
+      }
+    }
+  
     setToken(localStorage.getItem('token'));
   }, []);
 

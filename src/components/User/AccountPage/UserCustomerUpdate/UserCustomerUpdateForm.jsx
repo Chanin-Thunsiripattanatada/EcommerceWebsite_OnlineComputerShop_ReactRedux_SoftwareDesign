@@ -33,7 +33,7 @@ const CustomerUpdateForm = () => {
     try {
       // อัปเดตข้อมูลลูกค้าผ่าน API
       const customerResponse = await axios.put(
-        `http://localhost:8080/api/user/customers/${customerData.id}`, // ใช้ customerData.id
+        `http://localhost:8080/api/user/customers/${customerData.customerId}`, // ใช้ customerData.id
         customerData,
         {
           headers: {

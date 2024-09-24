@@ -11,7 +11,6 @@ import { useNavigate } from 'react-router-dom';
 const Header = () => {
   const [cartQuantity, setCartQuantity] = useState(0);
   const cartItems = useSelector(store => store.cart.items);
-  const navigate = useNavigate();
   useEffect(() => {
     let total = 0;
     cartItems.forEach(item => total += item.quantity);
@@ -19,11 +18,18 @@ const Header = () => {
   }, [cartItems]);
 
   const dispatch = useDispatch();
-  const cartTabVisibility = useSelector(store => store.cart.cartTabVisibility);
+  const navigate = useNavigate();
 
   const handleOpenCartTab = () => {
     dispatch(toggleCartTabVisibility());
   }
+  const [searchTerm, setSearchTerm] = useState("");
+  const handleSearchSubmit = (e) => {
+    e.preventDefault();
+    if (searchTerm.trim()) {
+      navigate(`/products?search=${searchTerm}`);
+    }
+  };
 
   return (
     <>
@@ -42,8 +48,15 @@ const Header = () => {
                 <button type="button" className="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
               </div>
               <div className="offcanvas-body">
-                <form className="d-flex mt-3 mt-lg-0" role="search" onSubmit={(e) => e.preventDefault()}>
-                  <input className="form-control me-2" type="search" placeholder="ค้นหาสินค้า" aria-label="Search" />
+              <form className="d-flex mt-3 mt-lg-0" role="search" onSubmit={handleSearchSubmit}>
+                  <input 
+                    className="form-control me-2" 
+                    type="search" 
+                    placeholder="ค้นหาสินค้า" 
+                    aria-label="Search"
+                    value={searchTerm}
+                    onChange={(e) => setSearchTerm(e.target.value)}
+                  />
                   <button className="btn btn-outline-success" data-bs-dismiss="offcanvas" type="submit">ค้นหา</button>
                 </form>
                 <br />

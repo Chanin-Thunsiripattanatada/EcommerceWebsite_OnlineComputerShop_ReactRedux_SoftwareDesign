@@ -9,7 +9,7 @@ function LoginForm() {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const { userLogin } = useAuth();
-    const { token } = useAuth();
+    // const { token } = useAuth();
     const [error, setError] = useState('');
     const [success, setSuccess] = useState('');
 

@@ -7,8 +7,10 @@ import ViewModal from './ViewModal';
 
 const FollowOrder = () => {
     const dispatch = useDispatch();
-    const orders = useSelector((state) => state.orders) || [];
     const { token, customer } = useAuth();
+    
+    // Safely initialize orders as an array
+    const orders = useSelector((state) => Array.isArray(state.orders) ? state.orders : []);
 
     const handleRefreshOrders = () => {
         if (customer && customer.customerId) {
@@ -18,7 +20,7 @@ const FollowOrder = () => {
 
     useEffect(() => {
         handleRefreshOrders();
-    }, [dispatch]);
+    }, [dispatch, customer, token]);
 
     const [showView, setShowView] = useState(false);
     const handleCloseView = () => setShowView(false);

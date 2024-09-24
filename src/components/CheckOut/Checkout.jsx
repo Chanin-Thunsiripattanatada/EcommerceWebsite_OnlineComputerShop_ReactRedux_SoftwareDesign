@@ -45,8 +45,8 @@ const Checkout = () => {
                 customerId: customerId,
             },
             orderItems: [],
-            status: 'รอการยืนยัน',
-            totalAmount: totalAmount,
+            status: '',
+            totalAmount: totalPrice,
         };
     
         // Dispatch placeOrder action and wait for the result
@@ -86,9 +86,6 @@ const Checkout = () => {
     return (
         <>
             <div className="container card">
-
-
-
                 <div className="card-body">
                     <h4>ชำระเงินสำหรับรถเข็นสินค้า</h4>
                     <div className="row">

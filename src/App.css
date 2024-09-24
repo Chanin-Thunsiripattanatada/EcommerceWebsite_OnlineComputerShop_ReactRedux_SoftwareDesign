@@ -79,7 +79,7 @@ footer {
   opacity: 1;
   top: 20px; /* Distance from the top */
   right: 20px; /* Distance from the right */
-  width: 400px; /* Set a fixed width for the cart */
+  width: 600px; /* Set a fixed width for the cart */
   max-height: 80vh; /* Maximum height, with scroll for overflow */
   background-color: rgb(255, 255, 255); /* Background color */
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Box shadow for card effect */
