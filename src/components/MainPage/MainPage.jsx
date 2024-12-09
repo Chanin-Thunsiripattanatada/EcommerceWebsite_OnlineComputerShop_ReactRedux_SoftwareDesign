@@ -1,25 +1,28 @@
 import React from "react";
-import Content1 from "./Content1";
-import Content2 from "./Content2";
-import Content3 from "./Content3";
+import CarouselImage from "./CarouselImage";
+import PartnerCarousel from "./PartnerCarousel";
+import FeaturedProduct from "./FeaturedProduct";
+import { ProductProvider } from "../../context";
+import CartTab from "../CartPage/CartTab";
+
 const MainPage = () => {
     return (
         <>
             <div className="container">
                 <div className="row pt-4">
                     <div className="col">
-                        <Content1 />
+                        <CarouselImage />
                     </div>
                 </div>
 
                 <div className="row pt-4">
                     <div className="col">
-                        <Content2 />
+                        <PartnerCarousel />
                     </div>
                 </div>
                 <div className="row pt-4">
                     <div className="col">
-                        <Content3 />
+                        <FeaturedProduct />
                     </div>
                 </div>
             </div>
