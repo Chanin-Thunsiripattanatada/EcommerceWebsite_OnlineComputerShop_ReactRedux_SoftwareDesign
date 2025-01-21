@@ -31,8 +31,8 @@
 # เอกสารและ Project ที่เกี่ยวข้อง
 
 - **[เอกสารประกอบ แสดง UI](https://drive.google.com/file/d/1m7j29N3fYfIUwgqnI5ZWXauAB3YTs5XB/view?usp=sharing)**  
-- **[เว็ปแอดมินระบบขายอุปกรณ์คอมพิวเตอร์ออนไลน์](https://github.com/Chanin-Thunsiripattanatada/OnlineComputerShop_JavaSpringBoot_BackendService_SoftwareDesign)**  
-- **[ระบบ API ของระบบขายอุปกรณ์คอมพิวเตอร์ออนไลน์](https://github.com/Chanin-Thunsiripattanatada/AdminSystem_OnlineComputerShop_ReactRedux_SoftwareDesign)**  
+- **[เว็ปแอดมินระบบขายอุปกรณ์คอมพิวเตอร์ออนไลน์](https://github.com/Chanin-Thunsiripattanatada/AdminSystem_OnlineComputerShop_ReactRedux_SoftwareDesign)**  
+- **[ระบบ API ของระบบขายอุปกรณ์คอมพิวเตอร์ออนไลน์](https://github.com/Chanin-Thunsiripattanatada/OnlineComputerShop_JavaSpringBoot_BackendService_SoftwareDesign)**  
 
 ---
 
