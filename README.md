@@ -1,70 +1,60 @@
-# Getting Started with Create React App
+# ระบบขายอุปกรณ์คอมพิวเตอร์ออนไลน์ (Online Computer Shop System) [เว็ปหน้าร้าน]
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## จัดทำโดย
 
-## Available Scripts
+- นายชนินทร์ ธัญสิริพัฒนธาดา 653380125-2
+    
+- นายนพรุจ อินพิกุล 653380132-5
+    
+- นายปวีณวัฒน์ สุขร่วม 653380136-7
+    
+- นายภูมิพิพัฒน์ มะลิมาตร์ 653380277-9
+    
+- นายภูริ วงษ์บุญ 653380278-7
+    
 
-In the project directory, you can run:
+## อาจารย์ที่ปรึกษา
 
-### `npm start`
+**รศ.ดร.ปัญญาพล หอระตะ**
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+---
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+รายงานนี้เป็นส่วนหนึ่งของการศึกษาวิชา
 
-### `npm test`
+**CP353002 หลักการออกแบบพัฒนาซอฟต์แวร์**  
+**ภาคเรียน 1 ปีการศึกษา 2567**
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+**ภาควิชาวิทยาการคอมพิวเตอร์**  
+วิทยาลัยการคอมพิวเตอร์  
+มหาวิทยาลัยขอนแก่น
 
-### `npm run build`
+# เอกสารและ Project ที่เกี่ยวข้อง
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- **[เอกสารประกอบ แสดง UI](https://drive.google.com/file/d/1m7j29N3fYfIUwgqnI5ZWXauAB3YTs5XB/view?usp=sharing)**  
+- **[เว็ปแอดมินระบบขายอุปกรณ์คอมพิวเตอร์ออนไลน์](https://github.com/Chanin-Thunsiripattanatada/OnlineComputerShop_JavaSpringBoot_BackendService_SoftwareDesign)**  
+- **[ระบบ API ของระบบขายอุปกรณ์คอมพิวเตอร์ออนไลน์](https://github.com/Chanin-Thunsiripattanatada/AdminSystem_OnlineComputerShop_ReactRedux_SoftwareDesign)**  
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+---
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+ระบบนี้เป็น **ระบบขายอุปกรณ์คอมพิวเตอร์ออนไลน์** ที่ช่วยจัดการข้อมูลการขาย สั่งซื้อสินค้า รายการสินค้า และข้อมูลลูกค้า พร้อมรองรับการอัปโหลดหลักฐานการโอนเงินสำหรับการชำระเงิน
 
-### `npm run eject`
+## Use Case Text
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+| ผู้ใช้ | Use Case (กรณีการใช้งาน) | คำอธิบาย |
+| --- | --- | --- |
+| ผู้ใช้ทั่วไป | ดูข้อมูลสินค้า | ผู้ใช้ทั่วไปและลูกค้าสามารถเข้าถึงข้อมูลสินค้าในระบบได้ |
+| ลูกค้า | ลงทะเบียน | ลูกค้าทำการสร้างบัญชีใหม่ในระบบโดยกรอกข้อมูลส่วนตัว |
+| ลูกค้า,ผู้ดูแลระบบ/พนักงาน | เข้าสู่ระบบ | สามารถเข้าสู่ระบบด้วยชื่อบัญชีและรหัสผ่านเพื่อซื้อสินค้า สำหรับลูกค้า และผู้ดูแลระบบสามารถเข้าสู่ระบบเพื่อจัดการข้อมูลได้ |
+| ลูกค้า | อัปเดตข้อมูลลูกค้า | ลูกค้าที่ลงทะเบียนแล้วสามารถอัปเดตข้อมูลส่วนตัวภายในระบบได้ |
+| ลูกค้า | สร้างคำสั่งซื้อ | ลูกค้าสามารถทำการสร้างคำสั่งซื้อโดยเลือกสินค้าที่ต้องการและดำเนินการเช็คเอาท์ |
+| ลูกค้า | ยืนยันคำสั่งซื้อด้วยสลิปโอนเงิน | หลังจากสั่งซื้อ ลูกค้าสามารถอัปโหลดสลิปโอนเงินเพื่อยืนยันคำสั่งซื้อ |
+| ผู้ดูแลระบบ/พนักงาน | จัดการข้อมูลสินค้า | ผู้ดูแลระบบหรือพนักงานสามารถเพิ่ม ลบ หรือแก้ไขข้อมูลสินค้าที่มีอยู่ในระบบได้ |
+| ผู้ดูแลระบบ/พนักงาน | จัดการข้อมูลคำสั่งซื้อ | ผู้ดูแลระบบหรือพนักงานสามารถตรวจสอบสลิปโอนเงินและอัปเดตสถานะการสั่งซื้อ รวมถึงการจัดการการจัดส่งสินค้า |
+| ผู้ดูแลระบบ/พนักงาน | ดูข้อมูลลูกค้า | ผู้ดูแลระบบหรือพนักงานสามารถดูข้อมูลของลูกค้าทั้งหมดในระบบได้ |
+| ลูกค้า | เรียกดูสถานะคำสั่งซื้อ | หลังจากยืนยันคำสั่งซื้อ ลูกค้าสามารถดูสถานะคำสั่งซื้อของตัวเองได้ |
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+<img src="https://content.pstmn.io/6701e2fa-332c-4cf5-b79a-219f176b898c/dXNlY2FzZV9kaWFncmFtLnBuZw==" alt="Use%20Case%20Diagram">
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+<img src="https://content.pstmn.io/e665931a-01b4-424f-ac1f-75865be1c1e7/c2VxdWVuY2VfZGlhZ3JhbS5wbmc=" alt="Sequence%20Diagram">
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+<img src="https://content.pstmn.io/c78e6afc-34df-467f-a93c-0254251097da/ZGF0YWJhc2VfZGlhZ3JhbS5wbmc=" alt="Class%20Diagram">
